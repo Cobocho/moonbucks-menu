@@ -17,6 +17,12 @@ function addMenu() {
   const menuName = $menuInput.value;
   const menu = makeMenu(menuName);
   $menuList.insertAdjacentHTML("beforeend", menu);
+  const removeBtn = document.querySelectorAll(".menu-remove-button")[
+    document.querySelectorAll(".menu-remove-button").length - 1
+  ];
+  removeBtn.addEventListener("click", (event) => {
+    event.target.parentNode.remove();
+  });
   $menuInput.value = "";
 }
 
