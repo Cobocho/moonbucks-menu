@@ -2,6 +2,7 @@ const $menuForm = document.getElementById("espresso-menu-form");
 const $menuInput = document.getElementById("espresso-menu-name");
 const $menuAddButton = document.getElementById("espresso-menu-submit-button");
 const $menuList = document.getElementById("espresso-menu-list");
+const $menuCount = document.querySelector(".menu-count");
 
 $menuForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -22,7 +23,9 @@ function addMenu() {
   ];
   removeBtn.addEventListener("click", (event) => {
     event.target.parentNode.remove();
+    countReset();
   });
+  countReset();
   $menuInput.value = "";
 }
 
@@ -45,4 +48,11 @@ function makeMenu(name) {
   </li>`;
 
   return templete;
+}
+
+function countReset() {
+  const $menuCount = document.querySelector(".menu-count");
+  $menuCount.textContent = `총 ${
+    document.querySelector("#espresso-menu-list").children.length
+  }개`;
 }
